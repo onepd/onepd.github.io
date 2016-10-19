@@ -1,0 +1,875 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="布局，RelativeLayout," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="常用布局Android 有 5 大布局，分别是 RelativeLayout、LinearLayout、FrameLayout、AbsoluteLayout、TableLayout。不过前 3 种布局才是最常用的布局，AbsoluteLayout 已经被 Google 废除，TableLayout 可以被 GridView 替代，因此也很少用。这里只介绍前 3 种，如果对后两种感兴趣可以自己去尝试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中的常用布局和长度单位">
+<meta property="og:url" content="http://onepd.cn/2015/04/15/Android中的常用布局/index.html">
+<meta property="og:site_name" content="Fly">
+<meta property="og:description" content="常用布局Android 有 5 大布局，分别是 RelativeLayout、LinearLayout、FrameLayout、AbsoluteLayout、TableLayout。不过前 3 种布局才是最常用的布局，AbsoluteLayout 已经被 Google 废除，TableLayout 可以被 GridView 替代，因此也很少用。这里只介绍前 3 种，如果对后两种感兴趣可以自己去尝试">
+<meta property="og:image" content="http://i.imgur.com/xWVpIQt.png">
+<meta property="og:image" content="http://i.imgur.com/im9jpmz.png">
+<meta property="og:image" content="http://i.imgur.com/w8RGM33.png">
+<meta property="og:image" content="http://i.imgur.com/LjsE5T2.png">
+<meta property="og:image" content="http://i.imgur.com/rqCNmb8.png">
+<meta property="og:image" content="http://i.imgur.com/VUxT1Pr.png">
+<meta property="og:image" content="http://i.imgur.com/l30a23n.png">
+<meta property="og:image" content="http://i.imgur.com/e6HMSca.png">
+<meta property="og:image" content="http://i.imgur.com/jsu4Nd5.png">
+<meta property="og:image" content="http://i.imgur.com/CRRRJlm.png">
+<meta property="og:updated_time" content="2016-09-30T08:54:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android中的常用布局和长度单位">
+<meta name="twitter:description" content="常用布局Android 有 5 大布局，分别是 RelativeLayout、LinearLayout、FrameLayout、AbsoluteLayout、TableLayout。不过前 3 种布局才是最常用的布局，AbsoluteLayout 已经被 Google 废除，TableLayout 可以被 GridView 替代，因此也很少用。这里只介绍前 3 种，如果对后两种感兴趣可以自己去尝试">
+<meta name="twitter:image" content="http://i.imgur.com/xWVpIQt.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android中的常用布局和长度单位 | Fly  - 欲上天堂，先下地狱。 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Fly</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle" id="site-subtitle">做对不做错就行.为善不为恶即可.</p>
+
+</div>
+ 
+<div class="site-nav-toggle">
+  <button onclick="showSubtitle()">
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav" id="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar-check-o"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android中的常用布局和长度单位
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-15T11:44:59+08:00" content="2015-04-15">
+              2015-04-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Android基础</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/15/Android中的常用布局/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/15/Android中的常用布局/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="常用布局"><a href="#常用布局" class="headerlink" title="常用布局"></a>常用布局</h1><p>Android 有 5 大布局，分别是 RelativeLayout、LinearLayout、FrameLayout、AbsoluteLayout、TableLayout。<br>不过前 3 种布局才是最常用的布局，AbsoluteLayout 已经被 Google 废除，TableLayout 可以被 GridView 替<br>代，因此也很少用。这里只介绍前 3 种，如果对后两种感兴趣可以自己去尝试研究。<br><a id="more"></a>   </p>
+<h2 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h2><p>相对布局 RelativeLayout 允许子元素指定它们相对于其父元素或兄弟元素的位置，这是实际布局中最<br>常用的布局方式之一。效果图如下：<br><img src="http://i.imgur.com/xWVpIQt.png" alt=""></p>
+<p>代码：<br><img src="http://i.imgur.com/im9jpmz.png" alt=""><br><img src="http://i.imgur.com/w8RGM33.png" alt=""><br><img src="http://i.imgur.com/LjsE5T2.png" alt=""><br>在上面布局中左上、左下、右上、右下使用的分别是 android:layout_alignParentXxxx=”true”属性，该属<br>性可以设置当前控件跟父控件的对其方式。<br>居中使用的是 android:layout_centerInParent=”true”属性，该属性让该控件位于父控件的水平和垂直两个<br>方向同时居中，如果只想让其位于父控件的一个方向居中则可以使用 android:layout_centerHorizontal=”true”或者android:layout_centerVertical=”true”。android:layout_toRightOf=”@id/btn” 该属性可以让当前控件位于指定控件的右侧，左侧雷同。如果想让该控件位于某控件的顶部则使用 android:layout_above=”@id/btn”底部使用<br>android:layout_below=”@id/btn”。<br>android:layout_alignTop=”@id/btn”、android:layout_alignLeft=”@id/btn”属性分别是让该控件相对于某控件顶部或者左侧对齐。注意：跟某个控件左侧对齐跟在某个控件左侧是不同的意思。</p>
+<h2 id="线性布局"><a href="#线性布局" class="headerlink" title="线性布局"></a>线性布局</h2><p>线性布局 LinearLayout 是根据水平Horizontal 或者垂直 Vertical方向排列的布局，其最大的特点是可以<br>给子控件按照权重分配空间。<br><img src="http://i.imgur.com/rqCNmb8.png" alt=""><br>代码如下<br><img src="http://i.imgur.com/VUxT1Pr.png" alt=""><br><img src="http://i.imgur.com/l30a23n.png" alt=""><br>在上面布局中，将整体划分为上下两部分。上下两部分对应连个LinearLayout，这两个 LinearLayout<br>的高度的权重设置为相同即可均分高度。<br>上面的 LinearLayout 是水平布局的，被水平分为 3 部分，第一部分和第二部分宽度相同，第三部分的<br>宽度是第一个和第二部分之和，因此也使用水平方向的权重，给第三部分设置权重为 2，其他两个权重设<br>置为 1 即可。下面的 LinearLayout 是垂直布局的，被垂直分为 3 部分。第一部分和第三部分的高度相同，第二部分<br>的高度是第一个和第三部分之和，因此也使用垂直方向的权重，给第一和第三部分权重设置为 1，第二部<br>分权重设置为 2 即可。</p>
+<h2 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h2><p>帧布局 FrameLayout 中的子视图总是被绘制到相对于屏幕的左上角上，所有添加到这个布局中的视图都是以层叠的方式显示，第一个添加到帧布局中的视图显示在最底层，最后一个被放在最顶层，上一层的视图会覆盖下一层的视图，类似于 html 中的 div。<br><img src="http://i.imgur.com/e6HMSca.png" alt=""><br>代码：<br><img src="http://i.imgur.com/jsu4Nd5.png" alt=""><br><img src="http://i.imgur.com/CRRRJlm.png" alt=""><br>在上面的布局中所有的子控件都居中，然后多个子控件一层叠加一层就显示出了层层放大的效果。</p>
+<h1 id="Android中的长度单位"><a href="#Android中的长度单位" class="headerlink" title="Android中的长度单位"></a>Android中的长度单位</h1><h2 id="px"><a href="#px" class="headerlink" title="px"></a>px</h2><p>pixels 的意思，是屏幕的物理像素点，与密度相关，密度大了，单位面积上的 px 会比较多。不推<br>荐使用的单位。</p>
+<h2 id="dip或者dp"><a href="#dip或者dp" class="headerlink" title="dip或者dp"></a>dip或者dp</h2><p>Density independent pixels 设备无关像素，简称 dip 也叫 dp。一般情况下，在不同分辨率下都不会有缩<br>放的感觉。在运行时，Android 系统会根据使用的屏幕的实际密度，透明地处理任何所需 dp 单位的缩放。<br>推荐使用的单位。</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>dpi ：dots per inch，直接来说就是一英寸多少个像素点。常见取值 120，160，240。一般称作像素密<br>度，简称密度<br>density ：直接翻译的话也叫密度，但是他在 Android 中特指 dp 和 px 的比例关系。常见取值 1.5 ，<br>1.0。</p>
+<h2 id="sp"><a href="#sp" class="headerlink" title="sp"></a>sp</h2><p>与刻度无关的单位，同 dip/dp 相似，会根据用户的字体大小偏好来缩放，主要用于设置字体的大小。</p>
+<h2 id="dp和px的区别"><a href="#dp和px的区别" class="headerlink" title="dp和px的区别"></a>dp和px的区别</h2><p>Android 官方定义 dip 等价于 160dpi 屏幕下的一个物理像素点，即 1dip=1px。转换公式如下：<br>dip =（dpi/（160 像素/英寸））px = density px；<br>举例来说，在 240 dpi 的屏幕上，1dip 等于 1.5px。<br>在 Android 的应用包 apk 中，系统会根据各个设备的具体情况引用相应的资源文件（注：不加任何标<br>签的资源是各种分辨率情况下共用的）：<br>当屏幕 density=240 时，使用 hdpi 标签的资源；<br>当屏幕 density=160 时，使用 mdpi 标签的资源；<br>当屏幕 density=120 时，使用 ldpi 标签的资源；</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="http://music.163.com/outchain/player?type=2&id=32364800&auto=1&height=32"></iframe>
+      
+    </div>
+
+	<div>
+      
+        
+<div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束 ------</div>
+
+      
+    </div>
+	
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/布局，RelativeLayout/" rel="tag">#布局，RelativeLayout</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/14/Android的事件处理/" class="post-nav-title-link" rel="prev" title="Android中的事件处理">
+                <i class="fa fa-chevron-left"></i> Android中的事件处理 
+              </a>
+            
+          </div>
+		  
+		  <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/14/Android的点击事件/" class="post-nav-title-link" rel="next" title="Android-电话拨号器">
+                Android-电话拨号器  <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/04/15/Android中的常用布局/"
+           data-title="Android中的常用布局和长度单位" data-url="http://onepd.cn/2015/04/15/Android中的常用布局/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/images/avatar.png"
+               alt="Fly.J" />
+          <p class="site-author-name" itemprop="name">Fly.J</p>
+          <p class="site-description motion-element" itemprop="description">欲上天堂，先下地狱。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/onepd" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              Links
+            </div>
+           
+              
+                <span class="links-of-author-item" style="text-align:left">
+                  <a href="http://stormzhang.com/" title="Stromzhang" target="_blank">Stromzhang</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align:left">
+                  <a href="http://codeagles.com" title="Codeagles" target="_blank">Codeagles</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align:left">
+                  <a href="http://blog.csdn.net/wang9901771" title="Yang" target="_blank">Yang</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align:left">
+                  <a href="milin.tech" title="Android_Milin" target="_blank">Android_Milin</a>
+                </span>
+              
+            
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用布局"><span class="nav-number">1.</span> <span class="nav-text">常用布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#相对布局"><span class="nav-number">1.1.</span> <span class="nav-text">相对布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性布局"><span class="nav-number">1.2.</span> <span class="nav-text">线性布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帧布局"><span class="nav-number">1.3.</span> <span class="nav-text">帧布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android中的长度单位"><span class="nav-number">2.</span> <span class="nav-text">Android中的长度单位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#px"><span class="nav-number">2.1.</span> <span class="nav-text">px</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dip或者dp"><span class="nav-number">2.2.</span> <span class="nav-text">dip或者dp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意："><span class="nav-number">2.2.1.</span> <span class="nav-text">注意：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sp"><span class="nav-number">2.3.</span> <span class="nav-text">sp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dp和px的区别"><span class="nav-number">2.4.</span> <span class="nav-text">dp和px的区别</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fly.J</span>
+  
+</div>
+
+<div class="powered-by">
+  Love you love
+</div>
+
+<div class="theme-info">
+  Love you do 
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"seven-pd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+  <script type="text/JavaScript">
+function hideElement(elementID)
+{
+	var myele=document.getElementById(elementID);
+	myele.style.display="none";
+}
+
+function showElement(elementID)
+{
+	var myele=document.getElementById(elementID);
+	myele.style.display="block";
+}
+</script>
+
+<script type="text/JavaScript">
+function showSubtitle()
+{
+  var siteNav=document.getElementById("site-nav");
+  if(siteNav.style.display=="block")
+  {
+   var subTitle=document.getElementById("site-subtitle");
+   subTitle.style.display="none";
+  }else
+  {
+   var subTitle=document.getElementById("site-subtitle");
+   subTitle.style.display="block";
+  }
+
+}
+</script>
+
+</body>
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</html>
