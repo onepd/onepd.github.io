@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="网络编程​    网络实现主要指的是Http，其次就是Socket；
-Http和Socket的区别​    Http协议是一种无状态的协议，每一次发出的请求第一步就是客户端与服务端建立连接，建立连接成功之后，把数据传过去，服务器再收到数据之后进行响应，然后再回传结果给客户端，这一次请求结束之后连接就断开了，下次再发新的请求就会重新建立，App 一般使用就是这种协议。
-​    Socket协议就是">
+<meta name="description" content="网络编程​    网络实现主要指的是Http，其次就是Socket；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-网络编程">
 <meta property="og:url" content="http://onepd.cn/2015/05/19/Android-网络编程/index.html">
 <meta property="og:site_name" content="Fly">
-<meta property="og:description" content="网络编程​    网络实现主要指的是Http，其次就是Socket；
-Http和Socket的区别​    Http协议是一种无状态的协议，每一次发出的请求第一步就是客户端与服务端建立连接，建立连接成功之后，把数据传过去，服务器再收到数据之后进行响应，然后再回传结果给客户端，这一次请求结束之后连接就断开了，下次再发新的请求就会重新建立，App 一般使用就是这种协议。
-​    Socket协议就是">
-<meta property="og:updated_time" content="2016-10-27T21:26:07.490Z">
+<meta property="og:description" content="网络编程​    网络实现主要指的是Http，其次就是Socket；">
+<meta property="og:updated_time" content="2016-10-27T21:34:55.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-网络编程">
-<meta name="twitter:description" content="网络编程​    网络实现主要指的是Http，其次就是Socket；
-Http和Socket的区别​    Http协议是一种无状态的协议，每一次发出的请求第一步就是客户端与服务端建立连接，建立连接成功之后，把数据传过去，服务器再收到数据之后进行响应，然后再回传结果给客户端，这一次请求结束之后连接就断开了，下次再发新的请求就会重新建立，App 一般使用就是这种协议。
-​    Socket协议就是">
+<meta name="twitter:description" content="网络编程​    网络实现主要指的是Http，其次就是Socket；">
 
 
 
@@ -338,9 +332,10 @@ Http和Socket的区别​    Http协议是一种无状态的协议，每一次�
 
       
         <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>​    网络实现主要指的是Http，其次就是Socket；</p>
+ <a id="more"></a>
 <h3 id="Http和Socket的区别"><a href="#Http和Socket的区别" class="headerlink" title="Http和Socket的区别"></a>Http和Socket的区别</h3><p>​    Http协议是一种无状态的协议，每一次发出的请求第一步就是客户端与服务端建立连接，建立连接成功之后，把数据传过去，服务器再收到数据之后进行响应，然后再回传结果给客户端，这一次请求结束之后连接就断开了，下次再发新的请求就会重新建立，App 一般使用就是这种协议。</p>
 <p>​    Socket协议就是长链接，言外之意就是说发数据之后，连接不会断开，会一直保持连接。一般运用与IM。</p>
-<a id="more"></a>
+<!--more-->
 <h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>​    http：每次发送请求，就会断开连接。比如说有1w个用户使用http协议，他看能同时连接服务器的只有1000个用户，因为其他用户在请求完之后就断开链接了，而socket 可能同时会有1w人连接服务器，这个就比较浪费服务器的资源，消耗带宽；</p>
 <p>​    socket的优势也很明显，因为它是一直保持连接的，每次用户发送的数据都很快，节省掉了重新建立连接的过程，而http则需要每次都要重新建立连接。导致效率上没有socker高效；</p>
 <h3 id="详述"><a href="#详述" class="headerlink" title="详述"></a>详述</h3><h4 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h4><p>http协议一般包括两大块，请求和响应，request和response</p>
