@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="布局，http，request，socket," />
+  <meta name="keywords" content="Android,权限的声明," />
 
 
 
@@ -84,16 +84,20 @@
 
 
 
-<meta name="description" content="网络编程">
+<meta name="description" content="Android案列-电话拨号器 通过这个例子你可以学会：①布局的编写②权限的声明③EditText值的获取④Button点击事件的监听⑤意图（Intent）的使用⑥调用系统拨打电话的功能；">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android网络编程">
-<meta property="og:url" content="http://onepd.cn/2015/04/18/Android网络编程/index.html">
+<meta property="og:title" content="Android-电话拨号器">
+<meta property="og:url" content="http://onepd.cn/2015/04/10/Android的点击事件/index.html">
 <meta property="og:site_name" content="Fly">
-<meta property="og:description" content="网络编程">
-<meta property="og:updated_time" content="2016-10-26T07:14:42.790Z">
+<meta property="og:description" content="Android案列-电话拨号器 通过这个例子你可以学会：①布局的编写②权限的声明③EditText值的获取④Button点击事件的监听⑤意图（Intent）的使用⑥调用系统拨打电话的功能；">
+<meta property="og:image" content="http://i.imgur.com/m6RxhuZ.png">
+<meta property="og:image" content="http://i.imgur.com/4p9tI5V.png">
+<meta property="og:image" content="http://i.imgur.com/W0JpMRS.png">
+<meta property="og:updated_time" content="2016-10-27T20:49:23.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android网络编程">
-<meta name="twitter:description" content="网络编程">
+<meta name="twitter:title" content="Android-电话拨号器">
+<meta name="twitter:description" content="Android案列-电话拨号器 通过这个例子你可以学会：①布局的编写②权限的声明③EditText值的获取④Button点击事件的监听⑤意图（Intent）的使用⑥调用系统拨打电话的功能；">
+<meta name="twitter:image" content="http://i.imgur.com/m6RxhuZ.png">
 
 
 
@@ -111,7 +115,7 @@
   };
 </script>
 
-  <title> Android网络编程 | Fly  - 欲上天堂，先下地狱。 </title>
+  <title> Android-电话拨号器 | Fly  - 欲上天堂，先下地狱。 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -265,7 +269,7 @@
             
             
               
-                Android网络编程
+                Android-电话拨号器
               
             
           </h1>
@@ -277,8 +281,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-04-18T11:44:59+08:00" content="2015-04-18">
-              2015-04-18
+            <time itemprop="dateCreated" datetime="2015-04-10T01:23:33+08:00" content="2015-04-10">
+              2015-04-10
             </time>
           </span>
 
@@ -307,8 +311,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/04/18/Android网络编程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/18/Android网络编程/" itemprop="commentsCount"></span>
+                <a href="/2015/04/10/Android的点击事件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/10/Android的点击事件/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -331,7 +335,47 @@
       
 
       
-        <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1>
+        <h1 id="Android案列-电话拨号器"><a href="#Android案列-电话拨号器" class="headerlink" title="Android案列-电话拨号器"></a>Android案列-电话拨号器</h1><p> 通过这个例子你可以学会：①布局的编写②权限的声明③EditText值的获取④Button点击事件的监听⑤意图（Intent）的使用⑥调用系统拨打电话的功能；<br><a id="more"></a><br>拨打电话的界面：<img src="http://i.imgur.com/m6RxhuZ.png" alt=""><br>步骤：  </p>
+<h2 id="编写布局"><a href="#编写布局" class="headerlink" title="编写布局"></a>编写布局</h2><p>1:activity_main.xml</p>
+<pre><code>&lt;!--垂直布局--&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+     android:orientation=&quot;vertical&quot;&gt;  
+&lt;!--文本编辑框--&gt;
+&lt;EditText
+    android:id=&quot;@+id&quot;/et_number
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;warp_parent&quot;
+    android:hint:&quot;请输入电话号码&quot;/&gt;
+&lt;!--按钮--&gt;
+&lt;Button
+    android:id=&quot;@+id/btn&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_gravity=&quot;right&quot;
+    android:text=&quot;拨打&quot;/&gt;
+</code></pre><ol>
+<li>上面的布局文件使用的是垂直的线性布局，线性布局有垂直vertical和水平horizontal两个方向，如果不写的话，默认的是后者，建议在声明布局的时候顺便把方向写出来。  </li>
+</ol>
+<ol>
+<li>android:layout_width 属性有三个固定的常量值，分别为：wrap_content(包裹当前的text)，控件的内容有多大就尽量给分配多大的空间；  match_parent,fill_parent是填充父控件类型，后者已经被抛弃，现在基本都在使用前者，使用该类型的空间尺寸跟父控件尺寸保持一样大。控件的尺寸除了这三种常量外还可以输入自定的尺寸，单位是dp;  </li>
+</ol>
+<ol>
+<li>android:id=”@+id/et_number”属性是为了给每一个控件分配一个编号id,这个id会记录在R类的子类id类中，方便我们在代码中通过R.id获取控件的引用。”@”后面跟的“+”号的意思是该id对应的值et_number需要新添加到R类中，而不是引用该值。</li>
+<li>android:hint=”请输入电话号码” 提示信息属性，当用户什么都没有输入的时候会显示提示信息。</li>
+</ol>
+<ol>
+<li>android:layout_gravity=”right”在 Button 控件中使用到了这个属性，表示该控件在父布局中的排<br>列方式，这里的值为 right，显然是靠右排列。</li>
+</ol>
+<ol>
+<li>android:text=”拨打”   Button 按钮显示的文本属性</li>
+</ol>
+<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><p>MainActivity中实现逻辑<br>    <img src="http://i.imgur.com/4p9tI5V.png" alt=""><br>    <img src="http://i.imgur.com/W0JpMRS.png" alt=""><br>上面的代码其实已经实现了点击事件的第一种方式，通过自定义类实现 OnClickListener 接口，然后给<br>Button 设置 setOnClickListener（）方法中传递该类的对象即可。  </p>
+<h2 id="添加权限"><a href="#添加权限" class="headerlink" title="添加权限"></a>添加权限</h2><p>在 Android 系统中凡是可能会侵犯到用户隐私或者耗费用户钱财的行为都必须声明出来，以便让用户<br>在安装 Android 应用时有知情权，然后选择是否安装。这是 Android 安全机制中的一部分。<br>在该案例中我们的应用实现了拨打电话的功能，那么这种行为肯定是需要声明权限的，因此我们必须<br>在 AndroidManifest.xml 中声明如下权限。</p>
+<p><uses-permission android:name="android.permission.CALL_PHONE"><br>添加过权限后部署应用，然后输入号码，测试拨打功能即可。  </uses-permission></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="http://music.163.com/outchain/player?type=2&id=27890306&auto=1&height=32"></iframe>
       
     </div>
 
@@ -360,7 +404,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/布局，http，request，socket/" rel="tag">#布局，http，request，socket</a>
+            <a href="/tags/Android-权限的声明/" rel="tag">#Android,权限的声明</a>
           
         </div>
       
@@ -369,13 +413,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/04/15/Android中的常用布局/" class="post-nav-title-link" rel="prev" title="Android中的常用布局和长度单位">
+                <i class="fa fa-chevron-left"></i> Android中的常用布局和长度单位 
+              </a>
+            
           </div>
 		  
 		  <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/04/18/文件的处理机制/" class="post-nav-title-link" rel="next" title="文件的处理机制">
-                文件的处理机制  <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -401,8 +445,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/04/18/Android网络编程/"
-           data-title="Android网络编程" data-url="http://onepd.cn/2015/04/18/Android网络编程/">
+      <div class="ds-thread" data-thread-key="2015/04/10/Android的点击事件/"
+           data-title="Android-电话拨号器" data-url="http://onepd.cn/2015/04/10/Android的点击事件/">
       </div>
     
   </div>
@@ -447,7 +491,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -464,7 +508,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -530,7 +574,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android案列-电话拨号器"><span class="nav-number">1.</span> <span class="nav-text">Android案列-电话拨号器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写布局"><span class="nav-number">1.1.</span> <span class="nav-text">编写布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码"><span class="nav-number">1.2.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加权限"><span class="nav-number">1.3.</span> <span class="nav-text">添加权限</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
