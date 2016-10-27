@@ -25,10 +25,11 @@
     <entry>
       <title><![CDATA[Android-基于监听的事件处理]]></title>
       <url>http://onepd.cn/2015/04/16/%E5%9F%BA%E4%BA%8E%E7%9B%91%E5%90%AC%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</url>
-      <content type="html"><![CDATA[<h1 id="监听的处理模型"><a href="#监听的处理模型" class="headerlink" title="监听的处理模型"></a>监听的处理模型</h1><pre><code>1:Event Source(事件源):事件发生的场所;泛指各个组件,按钮,窗口,菜单,等等
+      <content type="html"><![CDATA[ <a id="more"></a>
+<h1 id="监听的处理模型"><a href="#监听的处理模型" class="headerlink" title="监听的处理模型"></a>监听的处理模型</h1><pre><code>1:Event Source(事件源):事件发生的场所;泛指各个组件,按钮,窗口,菜单,等等
 2:Event(事件):事件封装了界面组件上发生的特定事情;如果程序需要获取界面组件上所发生事情的相关信息,一般通过Event对象来取得
 3:Event Listener(事件监听器):负责监听事件源所发生的事件.并对各种事件作出相应的相应;    
-</code></pre><p>   又因为Java是面向对象的编程语言,方法不能独立存在.So,必须要以类的     形式来组织这些方法.So,事情监听器的可信就是它说包含的方法–被    称         为事件处理器(Event Hander).<br> <a id="more"></a></p>
+</code></pre><p>   又因为Java是面向对象的编程语言,方法不能独立存在.So,必须要以类的     形式来组织这些方法.So,事情监听器的可信就是它说包含的方法–被    称         为事件处理器(Event Hander).</p>
 <p>每个组件都可以对某一特定的事件指定一个事件监听器,每个事件监听器也可监听一个或者是多个事件源;同时也可以让一类事件都是用同一个事件监听器来处理;<br>下面一张图来讲明事件处理流程示意图:<br><img src="http://i.imgur.com/lp79HLM.png" alt=""><br>​    </p>
 ]]></content>
     </entry>
@@ -36,7 +37,8 @@
     <entry>
       <title><![CDATA[Android中的常用布局和长度单位]]></title>
       <url>http://onepd.cn/2015/04/15/Android%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80/</url>
-      <content type="html"><![CDATA[<h1 id="常用布局"><a href="#常用布局" class="headerlink" title="常用布局"></a>常用布局</h1><p>Android 有 5 大布局，分别是 RelativeLayout、LinearLayout、FrameLayout、AbsoluteLayout、TableLayout。<br>不过前 3 种布局才是最常用的布局，AbsoluteLayout 已经被 Google 废除，TableLayout 可以被 GridView 替<br>代，因此也很少用。这里只介绍前 3 种，如果对后两种感兴趣可以自己去尝试研究。<br><a id="more"></a>   </p>
+      <content type="html"><![CDATA[ <a id="more"></a>
+<h1 id="常用布局"><a href="#常用布局" class="headerlink" title="常用布局"></a>常用布局</h1><p>Android 有 5 大布局，分别是 RelativeLayout、LinearLayout、FrameLayout、AbsoluteLayout、TableLayout。<br>不过前 3 种布局才是最常用的布局，AbsoluteLayout 已经被 Google 废除，TableLayout 可以被 GridView 替<br>代，因此也很少用。这里只介绍前 3 种，如果对后两种感兴趣可以自己去尝试研究。</p>
 <h2 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h2><p>相对布局 RelativeLayout 允许子元素指定它们相对于其父元素或兄弟元素的位置，这是实际布局中最<br>常用的布局方式之一。效果图如下：<br><img src="http://i.imgur.com/xWVpIQt.png" alt=""></p>
 <p>代码：<br><img src="http://i.imgur.com/im9jpmz.png" alt=""><br><img src="http://i.imgur.com/w8RGM33.png" alt=""><br><img src="http://i.imgur.com/LjsE5T2.png" alt=""><br>在上面布局中左上、左下、右上、右下使用的分别是 android:layout_alignParentXxxx=”true”属性，该属<br>性可以设置当前控件跟父控件的对其方式。<br>居中使用的是 android:layout_centerInParent=”true”属性，该属性让该控件位于父控件的水平和垂直两个<br>方向同时居中，如果只想让其位于父控件的一个方向居中则可以使用 android:layout_centerHorizontal=”true”或者android:layout_centerVertical=”true”。android:layout_toRightOf=”@id/btn” 该属性可以让当前控件位于指定控件的右侧，左侧雷同。如果想让该控件位于某控件的顶部则使用 android:layout_above=”@id/btn”底部使用<br>android:layout_below=”@id/btn”。<br>android:layout_alignTop=”@id/btn”、android:layout_alignLeft=”@id/btn”属性分别是让该控件相对于某控件顶部或者左侧对齐。注意：跟某个控件左侧对齐跟在某个控件左侧是不同的意思。</p>
 <h2 id="线性布局"><a href="#线性布局" class="headerlink" title="线性布局"></a>线性布局</h2><p>线性布局 LinearLayout 是根据水平Horizontal 或者垂直 Vertical方向排列的布局，其最大的特点是可以<br>给子控件按照权重分配空间。<br><img src="http://i.imgur.com/rqCNmb8.png" alt=""><br>代码如下<br><img src="http://i.imgur.com/VUxT1Pr.png" alt=""><br><img src="http://i.imgur.com/l30a23n.png" alt=""><br>在上面布局中，将整体划分为上下两部分。上下两部分对应连个LinearLayout，这两个 LinearLayout<br>的高度的权重设置为相同即可均分高度。<br>上面的 LinearLayout 是水平布局的，被水平分为 3 部分，第一部分和第二部分宽度相同，第三部分的<br>宽度是第一个和第二部分之和，因此也使用水平方向的权重，给第三部分设置权重为 2，其他两个权重设<br>置为 1 即可。下面的 LinearLayout 是垂直布局的，被垂直分为 3 部分。第一部分和第三部分的高度相同，第二部分<br>的高度是第一个和第三部分之和，因此也使用垂直方向的权重，给第一和第三部分权重设置为 1，第二部<br>分权重设置为 2 即可。</p>
@@ -52,7 +54,9 @@
     <entry>
       <title><![CDATA[Android-电话拨号器]]></title>
       <url>http://onepd.cn/2015/04/10/Android%E7%9A%84%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/</url>
-      <content type="html"><![CDATA[<h1 id="Android案列-电话拨号器"><a href="#Android案列-电话拨号器" class="headerlink" title="Android案列-电话拨号器"></a>Android案列-电话拨号器</h1><p> 通过这个例子你可以学会：①布局的编写②权限的声明③EditText值的获取④Button点击事件的监听⑤意图（Intent）的使用⑥调用系统拨打电话的功能；<br><a id="more"></a><br>拨打电话的界面：<img src="http://i.imgur.com/m6RxhuZ.png" alt=""><br>步骤：  </p>
+      <content type="html"><![CDATA[ <a id="more"></a>
+<h1 id="Android案列-电话拨号器"><a href="#Android案列-电话拨号器" class="headerlink" title="Android案列-电话拨号器"></a>Android案列-电话拨号器</h1><p> 通过这个例子你可以学会：①布局的编写②权限的声明③EditText值的获取④Button点击事件的监听⑤意图（Intent）的使用⑥调用系统拨打电话的功能；</p>
+<p>拨打电话的界面：<img src="http://i.imgur.com/m6RxhuZ.png" alt=""><br>步骤：  </p>
 <h2 id="编写布局"><a href="#编写布局" class="headerlink" title="编写布局"></a>编写布局</h2><p>1:activity_main.xml</p>
 <pre><code>&lt;!--垂直布局--&gt;
 &lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;

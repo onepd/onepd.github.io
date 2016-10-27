@@ -464,15 +464,15 @@
 
       
         
-          <h1 id="监听的处理模型"><a href="#监听的处理模型" class="headerlink" title="监听的处理模型"></a>监听的处理模型</h1><pre><code>1:Event Source(事件源):事件发生的场所;泛指各个组件,按钮,窗口,菜单,等等
+          
+             <a id="more"></a>
+<h1 id="监听的处理模型"><a href="#监听的处理模型" class="headerlink" title="监听的处理模型"></a>监听的处理模型</h1><pre><code>1:Event Source(事件源):事件发生的场所;泛指各个组件,按钮,窗口,菜单,等等
 2:Event(事件):事件封装了界面组件上发生的特定事情;如果程序需要获取界面组件上所发生事情的相关信息,一般通过Event对象来取得
 3:Event Listener(事件监听器):负责监听事件源所发生的事件.并对各种事件作出相应的相应;    
-</code></pre><p>   又因为Java是面向对象的编程语言,方法不能独立存在.So,必须要以类的     形式来组织这些方法.So,事情监听器的可信就是它说包含的方法–被    称         为事件处理器(Event Hander).<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/04/16/基于监听的事件处理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+</code></pre><p>   又因为Java是面向对象的编程语言,方法不能独立存在.So,必须要以类的     形式来组织这些方法.So,事情监听器的可信就是它说包含的方法–被    称         为事件处理器(Event Hander).</p>
+<p>每个组件都可以对某一特定的事件指定一个事件监听器,每个事件监听器也可监听一个或者是多个事件源;同时也可以让一类事件都是用同一个事件监听器来处理;<br>下面一张图来讲明事件处理流程示意图:<br><img src="http://i.imgur.com/lp79HLM.png" alt=""><br>​    </p>
+
+          
         
       
     </div>
@@ -593,12 +593,20 @@
 
       
         
-          <h1 id="常用布局"><a href="#常用布局" class="headerlink" title="常用布局"></a>常用布局</h1><p>Android 有 5 大布局，分别是 RelativeLayout、LinearLayout、FrameLayout、AbsoluteLayout、TableLayout。<br>不过前 3 种布局才是最常用的布局，AbsoluteLayout 已经被 Google 废除，TableLayout 可以被 GridView 替<br>代，因此也很少用。这里只介绍前 3 种，如果对后两种感兴趣可以自己去尝试研究。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/04/15/Android中的常用布局/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+             <a id="more"></a>
+<h1 id="常用布局"><a href="#常用布局" class="headerlink" title="常用布局"></a>常用布局</h1><p>Android 有 5 大布局，分别是 RelativeLayout、LinearLayout、FrameLayout、AbsoluteLayout、TableLayout。<br>不过前 3 种布局才是最常用的布局，AbsoluteLayout 已经被 Google 废除，TableLayout 可以被 GridView 替<br>代，因此也很少用。这里只介绍前 3 种，如果对后两种感兴趣可以自己去尝试研究。</p>
+<h2 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h2><p>相对布局 RelativeLayout 允许子元素指定它们相对于其父元素或兄弟元素的位置，这是实际布局中最<br>常用的布局方式之一。效果图如下：<br><img src="http://i.imgur.com/xWVpIQt.png" alt=""></p>
+<p>代码：<br><img src="http://i.imgur.com/im9jpmz.png" alt=""><br><img src="http://i.imgur.com/w8RGM33.png" alt=""><br><img src="http://i.imgur.com/LjsE5T2.png" alt=""><br>在上面布局中左上、左下、右上、右下使用的分别是 android:layout_alignParentXxxx=”true”属性，该属<br>性可以设置当前控件跟父控件的对其方式。<br>居中使用的是 android:layout_centerInParent=”true”属性，该属性让该控件位于父控件的水平和垂直两个<br>方向同时居中，如果只想让其位于父控件的一个方向居中则可以使用 android:layout_centerHorizontal=”true”或者android:layout_centerVertical=”true”。android:layout_toRightOf=”@id/btn” 该属性可以让当前控件位于指定控件的右侧，左侧雷同。如果想让该控件位于某控件的顶部则使用 android:layout_above=”@id/btn”底部使用<br>android:layout_below=”@id/btn”。<br>android:layout_alignTop=”@id/btn”、android:layout_alignLeft=”@id/btn”属性分别是让该控件相对于某控件顶部或者左侧对齐。注意：跟某个控件左侧对齐跟在某个控件左侧是不同的意思。</p>
+<h2 id="线性布局"><a href="#线性布局" class="headerlink" title="线性布局"></a>线性布局</h2><p>线性布局 LinearLayout 是根据水平Horizontal 或者垂直 Vertical方向排列的布局，其最大的特点是可以<br>给子控件按照权重分配空间。<br><img src="http://i.imgur.com/rqCNmb8.png" alt=""><br>代码如下<br><img src="http://i.imgur.com/VUxT1Pr.png" alt=""><br><img src="http://i.imgur.com/l30a23n.png" alt=""><br>在上面布局中，将整体划分为上下两部分。上下两部分对应连个LinearLayout，这两个 LinearLayout<br>的高度的权重设置为相同即可均分高度。<br>上面的 LinearLayout 是水平布局的，被水平分为 3 部分，第一部分和第二部分宽度相同，第三部分的<br>宽度是第一个和第二部分之和，因此也使用水平方向的权重，给第三部分设置权重为 2，其他两个权重设<br>置为 1 即可。下面的 LinearLayout 是垂直布局的，被垂直分为 3 部分。第一部分和第三部分的高度相同，第二部分<br>的高度是第一个和第三部分之和，因此也使用垂直方向的权重，给第一和第三部分权重设置为 1，第二部<br>分权重设置为 2 即可。</p>
+<h2 id="帧布局"><a href="#帧布局" class="headerlink" title="帧布局"></a>帧布局</h2><p>帧布局 FrameLayout 中的子视图总是被绘制到相对于屏幕的左上角上，所有添加到这个布局中的视图都是以层叠的方式显示，第一个添加到帧布局中的视图显示在最底层，最后一个被放在最顶层，上一层的视图会覆盖下一层的视图，类似于 html 中的 div。<br><img src="http://i.imgur.com/e6HMSca.png" alt=""><br>代码：<br><img src="http://i.imgur.com/jsu4Nd5.png" alt=""><br><img src="http://i.imgur.com/CRRRJlm.png" alt=""><br>在上面的布局中所有的子控件都居中，然后多个子控件一层叠加一层就显示出了层层放大的效果。</p>
+<h1 id="Android中的长度单位"><a href="#Android中的长度单位" class="headerlink" title="Android中的长度单位"></a>Android中的长度单位</h1><h2 id="px"><a href="#px" class="headerlink" title="px"></a>px</h2><p>pixels 的意思，是屏幕的物理像素点，与密度相关，密度大了，单位面积上的 px 会比较多。不推<br>荐使用的单位。</p>
+<h2 id="dip或者dp"><a href="#dip或者dp" class="headerlink" title="dip或者dp"></a>dip或者dp</h2><p>Density independent pixels 设备无关像素，简称 dip 也叫 dp。一般情况下，在不同分辨率下都不会有缩<br>放的感觉。在运行时，Android 系统会根据使用的屏幕的实际密度，透明地处理任何所需 dp 单位的缩放。<br>推荐使用的单位。</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>dpi ：dots per inch，直接来说就是一英寸多少个像素点。常见取值 120，160，240。一般称作像素密<br>度，简称密度<br>density ：直接翻译的话也叫密度，但是他在 Android 中特指 dp 和 px 的比例关系。常见取值 1.5 ，<br>1.0。</p>
+<h2 id="sp"><a href="#sp" class="headerlink" title="sp"></a>sp</h2><p>与刻度无关的单位，同 dip/dp 相似，会根据用户的字体大小偏好来缩放，主要用于设置字体的大小。</p>
+<h2 id="dp和px的区别"><a href="#dp和px的区别" class="headerlink" title="dp和px的区别"></a>dp和px的区别</h2><p>Android 官方定义 dip 等价于 160dpi 屏幕下的一个物理像素点，即 1dip=1px。转换公式如下：<br>dip =（dpi/（160 像素/英寸））px = density px；<br>举例来说，在 240 dpi 的屏幕上，1dip 等于 1.5px。<br>在 Android 的应用包 apk 中，系统会根据各个设备的具体情况引用相应的资源文件（注：不加任何标<br>签的资源是各种分辨率情况下共用的）：<br>当屏幕 density=240 时，使用 hdpi 标签的资源；<br>当屏幕 density=160 时，使用 mdpi 标签的资源；<br>当屏幕 density=120 时，使用 ldpi 标签的资源；</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="http://music.163.com/outchain/player?type=2&id=32364800&auto=1&height=32"></iframe>
+          
         
       
     </div>
@@ -719,12 +727,51 @@
 
       
         
-          <h1 id="Android案列-电话拨号器"><a href="#Android案列-电话拨号器" class="headerlink" title="Android案列-电话拨号器"></a>Android案列-电话拨号器</h1><p> 通过这个例子你可以学会：①布局的编写②权限的声明③EditText值的获取④Button点击事件的监听⑤意图（Intent）的使用⑥调用系统拨打电话的功能；<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/04/10/Android的点击事件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+             <a id="more"></a>
+<h1 id="Android案列-电话拨号器"><a href="#Android案列-电话拨号器" class="headerlink" title="Android案列-电话拨号器"></a>Android案列-电话拨号器</h1><p> 通过这个例子你可以学会：①布局的编写②权限的声明③EditText值的获取④Button点击事件的监听⑤意图（Intent）的使用⑥调用系统拨打电话的功能；</p>
+<p>拨打电话的界面：<img src="http://i.imgur.com/m6RxhuZ.png" alt=""><br>步骤：  </p>
+<h2 id="编写布局"><a href="#编写布局" class="headerlink" title="编写布局"></a>编写布局</h2><p>1:activity_main.xml</p>
+<pre><code>&lt;!--垂直布局--&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+     android:orientation=&quot;vertical&quot;&gt;  
+&lt;!--文本编辑框--&gt;
+&lt;EditText
+    android:id=&quot;@+id&quot;/et_number
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;warp_parent&quot;
+    android:hint:&quot;请输入电话号码&quot;/&gt;
+&lt;!--按钮--&gt;
+&lt;Button
+    android:id=&quot;@+id/btn&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_gravity=&quot;right&quot;
+    android:text=&quot;拨打&quot;/&gt;
+</code></pre><ol>
+<li>上面的布局文件使用的是垂直的线性布局，线性布局有垂直vertical和水平horizontal两个方向，如果不写的话，默认的是后者，建议在声明布局的时候顺便把方向写出来。  </li>
+</ol>
+<ol>
+<li>android:layout_width 属性有三个固定的常量值，分别为：wrap_content(包裹当前的text)，控件的内容有多大就尽量给分配多大的空间；  match_parent,fill_parent是填充父控件类型，后者已经被抛弃，现在基本都在使用前者，使用该类型的空间尺寸跟父控件尺寸保持一样大。控件的尺寸除了这三种常量外还可以输入自定的尺寸，单位是dp;  </li>
+</ol>
+<ol>
+<li>android:id=”@+id/et_number”属性是为了给每一个控件分配一个编号id,这个id会记录在R类的子类id类中，方便我们在代码中通过R.id获取控件的引用。”@”后面跟的“+”号的意思是该id对应的值et_number需要新添加到R类中，而不是引用该值。</li>
+<li>android:hint=”请输入电话号码” 提示信息属性，当用户什么都没有输入的时候会显示提示信息。</li>
+</ol>
+<ol>
+<li>android:layout_gravity=”right”在 Button 控件中使用到了这个属性，表示该控件在父布局中的排<br>列方式，这里的值为 right，显然是靠右排列。</li>
+</ol>
+<ol>
+<li>android:text=”拨打”   Button 按钮显示的文本属性</li>
+</ol>
+<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><p>MainActivity中实现逻辑<br>    <img src="http://i.imgur.com/4p9tI5V.png" alt=""><br>    <img src="http://i.imgur.com/W0JpMRS.png" alt=""><br>上面的代码其实已经实现了点击事件的第一种方式，通过自定义类实现 OnClickListener 接口，然后给<br>Button 设置 setOnClickListener（）方法中传递该类的对象即可。  </p>
+<h2 id="添加权限"><a href="#添加权限" class="headerlink" title="添加权限"></a>添加权限</h2><p>在 Android 系统中凡是可能会侵犯到用户隐私或者耗费用户钱财的行为都必须声明出来，以便让用户<br>在安装 Android 应用时有知情权，然后选择是否安装。这是 Android 安全机制中的一部分。<br>在该案例中我们的应用实现了拨打电话的功能，那么这种行为肯定是需要声明权限的，因此我们必须<br>在 AndroidManifest.xml 中声明如下权限。</p>
+<p><uses-permission android:name="android.permission.CALL_PHONE"><br>添加过权限后部署应用，然后输入号码，测试拨打功能即可。  </uses-permission></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="http://music.163.com/outchain/player?type=2&id=27890306&auto=1&height=32"></iframe>
+          
         
       
     </div>
