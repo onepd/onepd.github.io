@@ -4,13 +4,32 @@
   
     
     <entry>
-      <title><![CDATA[基于监听的事件处理]]></title>
+      <title><![CDATA[Android-网络编程]]></title>
+      <url>http://onepd.cn/2015/05/19/Android-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+      <content type="html"><![CDATA[<h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>​    网络实现主要指的是Http，其次就是Socket；</p>
+<h3 id="Http和Socket的区别"><a href="#Http和Socket的区别" class="headerlink" title="Http和Socket的区别"></a>Http和Socket的区别</h3><p>​    Http协议是一种无状态的协议，每一次发出的请求第一步就是客户端与服务端建立连接，建立连接成功之后，把数据传过去，服务器再收到数据之后进行响应，然后再回传结果给客户端，这一次请求结束之后连接就断开了，下次再发新的请求就会重新建立，App 一般使用就是这种协议。</p>
+<p>​    Socket协议就是长链接，言外之意就是说发数据之后，连接不会断开，会一直保持连接。一般运用与IM。</p>
+<a id="more"></a>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>​    http：每次发送请求，就会断开连接。比如说有1w个用户使用http协议，他看能同时连接服务器的只有1000个用户，因为其他用户在请求完之后就断开链接了，而socket 可能同时会有1w人连接服务器，这个就比较浪费服务器的资源，消耗带宽；</p>
+<p>​    socket的优势也很明显，因为它是一直保持连接的，每次用户发送的数据都很快，节省掉了重新建立连接的过程，而http则需要每次都要重新建立连接。导致效率上没有socker高效；</p>
+<h3 id="详述"><a href="#详述" class="headerlink" title="详述"></a>详述</h3><h4 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h4><p>http协议一般包括两大块，请求和响应，request和response</p>
+<h5 id="request"><a href="#request" class="headerlink" title="request"></a>request</h5><p>request：就你在浏览器输入一个网址，或者手机端发送一个网络请求都算一个request一般包括请求的地址，参数，header，method；</p>
+<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><p>​    参数包括两种。一种是get请求（我们在输入一个网址之后，url问号后面的都是参数，这些参数不影响访问结果），另一种是post请求携带的参数，比如说我们在网页填写一个表单，比如填写用户名，密码之类的提交给服务器的，这种参数不会直接显示，他是通过一个body的方式传递给服务端，这种参数form（表单），默认的情况下都是一种key，value对的形式传递的。</p>
+<h6 id="method"><a href="#method" class="headerlink" title="method"></a>method</h6><p>​    请求方法包含 get，post，delete，put，head，patch，trace，options，</p>
+<p>其中常见的话就只有两种，即get和post。其他的六种方法都是根据post衍生而来，常用的方法就是  get，post，delete，put，对应我们数据库增删改查四种操作。</p>
+<h6 id="header作用"><a href="#header作用" class="headerlink" title="header作用"></a>header作用</h6><p>header不管它是request和reponse都有的，比如说客服端告诉服务器，我发送的请求是什么语言，我发起的请求带带参数是什么格式的，是json还是哈希，我发送的请求带不带缓存，需要不要压缩等等，服务端在返回结果的时候也有一些信息告诉客服端，同样也是在header里面传递，告诉客户端返回的数据是什么格式的，请求是不是支持缓存，handel里的信息都是一个个键值对。</p>
+<h5 id="response（响应）"><a href="#response（响应）" class="headerlink" title="response（响应）"></a>response（响应）</h5><p>服务端返回的值，response也有heander，除了hander以外还会有返回值，对于我们app中，大部分的response都是josn格式的数据，（android中大部分都有一些解析器），返回的还有一些状态码，一般是200-500.，比较常见的，200，ok304缓存内容404 找不到 等</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android-基于监听的事件处理]]></title>
       <url>http://onepd.cn/2015/04/16/%E5%9F%BA%E4%BA%8E%E7%9B%91%E5%90%AC%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<h1 id="监听的处理模型"><a href="#监听的处理模型" class="headerlink" title="监听的处理模型"></a>监听的处理模型</h1><pre><code>1:Event Source(事件源):事件发生的场所;泛指各个组件,按钮,窗口,菜单,等等
 2:Event(事件):事件封装了界面组件上发生的特定事情;如果程序需要获取界面组件上所发生事情的相关信息,一般通过Event对象来取得
 3:Event Listener(事件监听器):负责监听事件源所发生的事件.并对各种事件作出相应的相应;    
 </code></pre><p>   又因为Java是面向对象的编程语言,方法不能独立存在.So,必须要以类的     形式来组织这些方法.So,事情监听器的可信就是它说包含的方法–被    称         为事件处理器(Event Hander).<br> <a id="more"></a></p>
-<p>每个组件都可以对某一特定的事件指定一个事件监听器,每个事件监听器也可监听一个或者是多个事件源;同时也可以让一类事件都是用同一个事件监听器来处理;<br>下面一张图来讲明事件处理流程示意图:<br><img src="http://i.imgur.com/lp79HLM.png" alt=""></p>
+<p>每个组件都可以对某一特定的事件指定一个事件监听器,每个事件监听器也可监听一个或者是多个事件源;同时也可以让一类事件都是用同一个事件监听器来处理;<br>下面一张图来讲明事件处理流程示意图:<br><img src="http://i.imgur.com/lp79HLM.png" alt=""><br>​    </p>
 ]]></content>
     </entry>
     
