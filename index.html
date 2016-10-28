@@ -336,27 +336,13 @@
 
       
         
-          
-            <p>网络实现主要指的是Http，其次就是Socket。</p>
+          <p>网络实现主要指的是Http，其次就是Socket。</p>
 <h3 id="Http和Socket的区别"><a href="#Http和Socket的区别" class="headerlink" title="Http和Socket的区别"></a>Http和Socket的区别</h3><p>​    Http协议是一种无状态的协议，每一次发出的请求第一步就是客户端与服务端建立连接，建立连接成功之后，把数据传过去，服务器再收到数据之后进行响应，然后再回传结果给客户端，这一次请求结束之后连接就断开了，下次再发新的请求就会重新建立，App 一般使用就是这种协议。                                                                    Socket协议就是长链接，言外之意就是说发数据之后，连接不会断开，会一直保持连接。一般运用与IM。</p>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>​    http：每次发送请求，就会断开连接。比如说有1w个用户使用http协议，他看能同时连接服务器的只有1000个用户，因为其他用户在请求完之后就断开链接了，而socket 可能同时会有1w人连接服务器，这个就比较浪费服务器的资源，消耗带宽；</p>
-<p>​    socket的优势也很明显，因为它是一直保持连接的，每次用户发送的数据都很快，节省掉了重新建立连接的过程，而http则需要每次都要重新建立连接。导致效率上没有socker高效；</p>
-<h3 id="详述"><a href="#详述" class="headerlink" title="详述"></a>详述</h3><h4 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h4><p>http协议一般包括两大块，请求和响应，request和response</p>
-<h5 id="request"><a href="#request" class="headerlink" title="request"></a>request</h5><p>request：就你在浏览器输入一个网址，或者手机端发送一个网络请求都算一个request一般包括请求的地址，参数，header，method；</p>
-<h6 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h6><p>​    参数包括两种。一种是get请求（我们在输入一个网址之后，url问号后面的都是参数，这些参数不影响访问结果），另一种是post请求携带的参数，比如说我们在网页填写一个表单，比如填写用户名，密码之类的提交给服务器的，这种参数不会直接显示，他是通过一个body的方式传递给服务端，这种参数form（表单），默认的情况下都是一种key，value对的形式传递的。</p>
-<h6 id="method"><a href="#method" class="headerlink" title="method"></a>method</h6><p>​    请求方法包含 get，post，delete，put，head，patch，trace，options，</p>
-<p>其中常见的话就只有两种，即get和post。其他的六种方法都是根据post衍生而来，常用的方法就是  get，post，delete，put，对应我们数据库增删改查四种操作。</p>
-<h6 id="header作用"><a href="#header作用" class="headerlink" title="header作用"></a>header作用</h6><p>header不管它是request和reponse都有的，比如说客服端告诉服务器，我发送的请求是什么语言，我发起的请求带带参数是什么格式的，是json还是哈希，我发送的请求带不带缓存，需要不要压缩等等，服务端在返回结果的时候也有一些信息告诉客服端，同样也是在header里面传递，告诉客户端返回的数据是什么格式的，请求是不是支持缓存，handel里的信息都是一个个键值对。</p>
-<h5 id="response（响应）"><a href="#response（响应）" class="headerlink" title="response（响应）"></a>response（响应）</h5><p>服务端返回的值，response也有heander，除了hander以外还会有返回值，对于我们app中，大部分的response都是josn格式的数据，（android中大部分都有一些解析器），返回的还有一些状态码，一般是200-500.，比较常见的，200，ok304缓存内容404 找不到等</p>
-<h4 id="http缓存"><a href="#http缓存" class="headerlink" title="http缓存"></a>http缓存</h4><p>缓存是开发中最常见的一个环节，可以算是性能优化的一个大点，缓存分两个部分，客户端和服务端，可能有些人认为只有客户端才会有缓存，但是我们服务端在在查一个数据的时候，服务端都要到数据库重新查询一遍。</p>
-<h5 id="常用的两种缓存机制"><a href="#常用的两种缓存机制" class="headerlink" title="常用的两种缓存机制"></a>常用的两种缓存机制</h5><h6 id="时间缓存"><a href="#时间缓存" class="headerlink" title="时间缓存"></a>时间缓存</h6><p>比如我查询中国城市的信息，城市的信息可能永久都不会改变，对于这样我们就设置7天的缓存时间码，意味着客户端每次请求，服务端一次查询数据之后，7天之内不会再查询数据库，直接返回给你上一次的结果。判断缓存的生效一般用herder里的cache-control字段控制，如果字段为true的话，那么服务段友缓存的话就会启动缓存，如果传递的是false值，那么会强制服务端每次都去数据库中去查询数据；</p>
-<h6 id="Etag缓存"><a href="#Etag缓存" class="headerlink" title="Etag缓存"></a>Etag缓存</h6><p>Etag  可以理解成一个唯一的字符串，这个字符串是服务端根据时间，用户标识，内容索引等生成的一个字符串，如果用户内容不变化，那么Etag也不会变化，我们在刷微博的时候使用的就是这个机制，我客户端发送一个请求，服务端返回一个数据，告客户端，我是有缓存的，缓存的Etag值也会反悔给你，然后我把返回的数据以及Etag缓存到本地，这样下次请求的话如果数据没有发生变化，那么服务端不会返回给你数据，只会返回一个Etag值，拿到这个值之后可以去本地找这个Etag缓存对应的数据，</p>
-<p>目前流行的网络请求库，都是有以上两种缓存机制的，volley库和http；</p>
-<p>例如volley库，内部实现缓存机制，每次请求之后如果服务端支持缓存的话，他自己直接在本地进行缓存，下次服务端返回304的话，并返回了一个Etag值，那么volley会自动去本地寻找上次缓存过的数据进行渲染。</p>
-<h4 id="缓存处理"><a href="#缓存处理" class="headerlink" title="缓存处理"></a>缓存处理</h4><p> 我们通常在做缓存处理的时候，就是用户打开一个页面，先判断本地缓存有没有，有的话直接显示，然后显示下拉刷新状态去请求，获取到最新的数据再刷新页面，如果没有获取到新数据就不做处理，（目的是用户一进来最好能让他看到一些数据做些占位符）</p>
-<h6 id="简单的缓存处理"><a href="#简单的缓存处理" class="headerlink" title="简单的缓存处理"></a>简单的缓存处理</h6><p> 使用文本Sharedpreference，键值对存在的形式缓存，key：给个标识，value：寸服务器返回来的json数据，如果对于比较大大或者数据分页都需要做缓存的，可是使用数据库或者文件来做缓存。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/19/Android-网络编程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
