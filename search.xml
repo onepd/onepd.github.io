@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Android-网络编程]]></title>
       <url>http://onepd.cn/2015/05/19/Android-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
-      <content type="html"><![CDATA[<h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>​    网络实现主要指的是Http，其次就是Socket；</p>
+      <content type="html"><![CDATA[<p>网络实现主要指的是Http，其次就是Socket。</p>
 <a id="more"></a>
 <h3 id="Http和Socket的区别"><a href="#Http和Socket的区别" class="headerlink" title="Http和Socket的区别"></a>Http和Socket的区别</h3><p>​    Http协议是一种无状态的协议，每一次发出的请求第一步就是客户端与服务端建立连接，建立连接成功之后，把数据传过去，服务器再收到数据之后进行响应，然后再回传结果给客户端，这一次请求结束之后连接就断开了，下次再发新的请求就会重新建立，App 一般使用就是这种协议。</p>
 <p>​    Socket协议就是长链接，言外之意就是说发数据之后，连接不会断开，会一直保持连接。一般运用与IM。</p>
@@ -25,7 +25,8 @@
     <entry>
       <title><![CDATA[Android-基于监听的事件处理]]></title>
       <url>http://onepd.cn/2015/04/16/%E5%9F%BA%E4%BA%8E%E7%9B%91%E5%90%AC%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</url>
-      <content type="html"><![CDATA[<h1 id="监听的处理模型"><a href="#监听的处理模型" class="headerlink" title="监听的处理模型"></a>监听的处理模型</h1> <a id="more"></a>
+      <content type="html"><![CDATA[<p> Android中的基于监听的事件处理</p>
+<a id="more"></a>
 <pre><code>1:Event Source(事件源):事件发生的场所;泛指各个组件,按钮,窗口,菜单,等等
 2:Event(事件):事件封装了界面组件上发生的特定事情;如果程序需要获取界面组件上所发生事情的相关信息,一般通过Event对象来取得
 3:Event Listener(事件监听器):负责监听事件源所发生的事件.并对各种事件作出相应的相应;    
